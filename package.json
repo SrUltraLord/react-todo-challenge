@@ -5,7 +5,8 @@
   "main": "./server/dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx ts-node ./server/src/main.ts"
+    "dev": "npx ts-node ./server/src/main.ts",
+    "dev:watch": "tsx watch ./server/src/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "@types/node": "^18.15.11",
     "prisma": "^4.12.0",
     "ts-node": "^10.9.1",
+    "tsx": "^3.12.6",
     "typescript": "^5.0.4"
   },
   "dependencies": {
