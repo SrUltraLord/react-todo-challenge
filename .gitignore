@@ -1,0 +1,8 @@
+node_modules
+client/node_modules
+
+# Keep environment variables out of version control
+.env
+
+# Ignore compiled JS output
+server/dist
