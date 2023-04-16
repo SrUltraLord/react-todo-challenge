@@ -9,8 +9,11 @@ const server = new ApolloServer({
     Query,
     Mutation,
   },
+  cors: {
+    origin: "*",
+  },
 });
 
 server.listen().then(({ url }) => {
-  console.log(`Server running at ${url}`);
+  console.log(`Server listening at ${url}`);
 });

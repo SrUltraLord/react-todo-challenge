@@ -1,6 +1,11 @@
 import { Prisma } from "@prisma/client";
 
-import { getAllTodos, createTodo, updateTodo } from "../services/todo.service";
+import {
+  getAllTodos,
+  createTodo,
+  updateTodo,
+  deleteTodo,
+} from "../services/todo.service";
 
 type GetTodosInput = { complete: boolean | null };
 
@@ -21,5 +26,7 @@ export const Mutation = {
   updateTodo: async (_: any, { id, input }: UpdateTodoInput) => {
     return await updateTodo(id, input);
   },
-  deleteTodo: () => {},
+  deleteTodo: async (_: any, { id }: DeleteTodoInput) => {
+    return await deleteTodo(id);
+  },
 };
