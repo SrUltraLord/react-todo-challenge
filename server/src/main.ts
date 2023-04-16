@@ -1,9 +1,16 @@
-import express from "express";
+import { ApolloServer } from "apollo-server";
 
-const APP_DEFAULT_PORT = 5000;
+import { todoTypes } from "./schemas/todo.schema";
+import { Query, TodoMutationResolver } from "./resolvers/todo.resolvers";
 
-const app = express();
+const server = new ApolloServer({
+  typeDefs: todoTypes,
+  // schema: {},
+  resolvers: {
+    Query,
+  },
+});
 
-app.listen(APP_DEFAULT_PORT, () =>
-  console.log(`Server running on port ${APP_DEFAULT_PORT}`)
-);
+server.listen().then(({ url }) => {
+  console.log(`Server running at ${url}`);
+});
