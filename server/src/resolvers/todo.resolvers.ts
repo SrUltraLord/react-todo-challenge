@@ -1,22 +1,25 @@
 import { Prisma } from "@prisma/client";
 
-import { getAllTodos, createTodo } from "../services/todo.service";
+import { getAllTodos, createTodo, updateTodo } from "../services/todo.service";
 
-type GetTodosParams = {
-  id: string;
-  title: string;
-};
+type GetTodosInput = { complete: boolean | null };
+
+type CreateTodoInput = { input: Prisma.TodoCreateInput };
+type UpdateTodoInput = { id: string; input: Prisma.TodoUpdateInput };
+type DeleteTodoInput = { id: string };
 
 export const Query = {
-  getTodos: async (_: any, { id, title }: GetTodosParams) => {
-    return await getAllTodos();
+  getTodos: async (_: any, { complete }: GetTodosInput) => {
+    return await getAllTodos(complete);
   },
 };
 
 export const Mutation = {
-  createTodo: async (_: any, { input }: { input: Prisma.TodoCreateInput }) => {
-    console.log("createTodo resolver", { input });
-
+  createTodo: async (_: any, { input }: CreateTodoInput) => {
     return await createTodo(input);
   },
+  updateTodo: async (_: any, { id, input }: UpdateTodoInput) => {
+    return await updateTodo(id, input);
+  },
+  deleteTodo: () => {},
 };

@@ -2,7 +2,7 @@ import { gql } from "apollo-server";
 
 export const todoTypes = gql`
   type Query {
-    getTodos: [Todo!]!
+    getTodos(complete: Boolean): [Todo!]!
   }
 
   type Mutation {
@@ -19,6 +19,7 @@ export const todoTypes = gql`
     endTime: String!
     remind: String
     repeat: String
+    complete: Boolean
   }
 
   input CreateTodo {
@@ -31,10 +32,11 @@ export const todoTypes = gql`
   }
 
   input UpdateTodo {
-    title: String!
-    deadline: String!
-    startTime: String!
-    endTime: String!
+    title: String
+    deadline: String
+    startTime: String
+    endTime: String
+    complete: Boolean
     remind: String
     repeat: String
   }
