@@ -1,15 +1,22 @@
+import { Prisma } from "@prisma/client";
+
+import { getAllTodos, createTodo } from "../services/todo.service";
+
 type GetTodosParams = {
   id: string;
   title: string;
 };
 
 export const Query = {
-  getTodos: (_: any, { id, title }: GetTodosParams) => {
-    return [
-      { id: 1, title: "Do the laundry" },
-      { id: 2, title: "Learn Next" },
-    ];
+  getTodos: async (_: any, { id, title }: GetTodosParams) => {
+    return await getAllTodos();
   },
 };
 
-export const Mutation = {};
+export const Mutation = {
+  createTodo: async (_: any, { input }: { input: Prisma.TodoCreateInput }) => {
+    console.log("createTodo resolver", { input });
+
+    return await createTodo(input);
+  },
+};
