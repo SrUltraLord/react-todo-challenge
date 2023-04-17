@@ -1,20 +1,27 @@
 # React TODO Code challenge
 
-## Despliegue en desarrollo
+Backend para el reto de React TODO.
+
+## Ejecución
 
 Para ejecutar el back end del proyecto en modo de desarrollo se puede utilizar el siguiente
 comando:
+
+// TODO: Agregar pasos de prisma?
 
 ```bash
 $ npm run dev
 ```
 
-## Despliegue para producción
-
-Es necesario compilar todo el código a JS mediante el siguiente comando.
+O para facilitar el desarrollo:
 
 ```bash
-$ npx tsc
+$ npm run dev:watch
 ```
 
-Esto colocará todo el código de JS en el directorio `server/dist`
+## Tecnologías utilizadas
+
+- [GraphQL](https://graphql.org/): Lenguaje de consulta para el API.
+- [Prisma](https://www.prisma.io/): ORM usado para interactuar con la base de datos.
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server/): Servidor de GraphQL en Node.
+- [SQLite](https://sqlite.org/index.html): Base de datos en ficheros.
