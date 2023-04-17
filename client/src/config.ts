@@ -1,3 +1,3 @@
 export default Object.freeze({
-  todoApiUrl: "http://localhost:4000",
+  serverUrl: "http://localhost:4000",
 });

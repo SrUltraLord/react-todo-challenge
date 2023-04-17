@@ -1,24 +1,17 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { type Todo } from "../types/Todo";
 import { NavBar } from "../components/NavBar";
 import { TodoFilter } from "../components/TodoFilter";
 import { TodosList } from "../components/TodosList";
 import { Button } from "../components/Button";
 
-import { SearchIcon } from "../icons/SearchIcon";
-import { BellIcon } from "../icons/BellIcon";
-import { MenuIcon } from "../icons/MenuIcon";
+import { SearchIcon, BellIcon, MenuIcon } from "../icons";
+import { useFetchTodos } from "../hooks/useFetchTodos"
 
 export const BoardPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const [completeFilter, setCompleteFilter] = useState<boolean>();
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: "1", title: "Sacar a pasear a Jack", complete: false },
-    { id: "2", title: "Jugar CSGO", complete: true },
-  ]);
+  const { completedFilter, setCompletedFilter, todosQuery } = useFetchTodos();
 
   return (
     <div className="flex h-screen flex-col bg-slate-50">
@@ -33,11 +26,11 @@ export const BoardPage: React.FC = () => {
       </NavBar>
 
       <TodoFilter
-        completeFilter={completeFilter}
-        setCompleteFilter={setCompleteFilter}
+        completeFilter={completedFilter}
+        setCompleteFilter={setCompletedFilter}
       />
 
-      <TodosList todos={todos} />
+      <TodosList todos={todosQuery.data?.getTodos} />
 
       <div className="bg-white p-8">
         <Button text="Add a task" onClick={() => navigate("/new")} />
