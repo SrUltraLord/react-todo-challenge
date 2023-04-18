@@ -13,10 +13,11 @@ datasource db {
 model Todo {
   id String @id
   title String
-  deadline String
+  deadline DateTime
   startTime String
   endTime String
   remind String?
   repeat String?
   complete Boolean @default(false)
+  createdAt DateTime @default(now())
 }
