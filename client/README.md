@@ -4,8 +4,12 @@ Frontend para el reto de React TODO, creado con Vite.
 
 ## Ejecución
 
-Para ejecutar proyecto en modo de desarrollo se puede utilizar el siguiente comando:
+Instalar las dependencias:
+```bash
+$ npm i
+```
 
+Para ejecutar proyecto en modo de desarrollo se puede utilizar el siguiente comando:
 ```bash
 $ npm run dev
 ```

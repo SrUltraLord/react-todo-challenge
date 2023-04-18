@@ -4,20 +4,23 @@ Backend para el reto de React TODO.
 
 ## Ejecución
 
+Instalar las dependencias:
+```bash
+$ npm i
+```
+
 Para ejecutar el back end del proyecto en modo de desarrollo se puede utilizar el siguiente
 comando:
-
-// TODO: Agregar pasos de prisma?
-
 ```bash
 $ npm run dev
 ```
 
-O para facilitar el desarrollo:
-
+En modo de producción:
 ```bash
-$ npm run dev:watch
+$ npm run prod
 ```
+
+Esto hará que el servidor se ejecute en el puerto `4000`.
 
 ## Tecnologías utilizadas
 
