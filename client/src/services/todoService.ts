@@ -9,8 +9,12 @@ type GetTodosResponse = {
   getTodos: Todo[];
 };
 
-type UpdateTodoResponse = {
+type TodoMutationResponse = {
   updateTodo: string;
+};
+
+type CreateMutationResponse = {
+  createTodo: string;
 };
 
 export const fetchTodos = async (
@@ -34,15 +38,29 @@ export const fetchTodos = async (
 export const updateTodo = async (
   id: string,
   todoData: Partial<Todo>
-): Promise<UpdateTodoResponse> => {
+): Promise<TodoMutationResponse> => {
   const updateTodoMutation = gql`
     mutation UpdateTodo($updateTodoId: ID!, $input: UpdateTodo!) {
       updateTodo(id: $updateTodoId, input: $input)
     }
   `;
 
-  return await request<UpdateTodoResponse>(GQL_ENDPOINT, updateTodoMutation, {
+  return await request<TodoMutationResponse>(GQL_ENDPOINT, updateTodoMutation, {
     updateTodoId: id,
+    input: todoData,
+  });
+};
+
+export const createTodo = async (todoData: Partial<Todo>) => {
+  const createTodoMutation = gql`
+    mutation CreateTodo($input: CreateTodo!) {
+      createTodo(input: $input) {
+        id
+      }
+    }
+  `;
+
+  return await request<TodoMutationResponse>(GQL_ENDPOINT, createTodoMutation, {
     input: todoData,
   });
 };

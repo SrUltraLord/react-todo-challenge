@@ -24,8 +24,6 @@ export const BoardPage: React.FC = () => {
   const isLoading = todosQuery.isLoading || updateTodoMutation.isLoading;
 
   const handleTodoStateUpdate = (id: string, currentState: boolean) => {
-    console.log({ id, newState: currentState });
-
     if (id === undefined || currentState === undefined) {
       return;
     }

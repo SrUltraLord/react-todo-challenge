@@ -11,7 +11,7 @@ export const TodosList: React.FC<Props> = ({
   handleTodoStateUpdate,
 }: Props) => {
   return (
-    <div className="flex flex-1 flex-col space-y-10 bg-white p-8">
+    <div className="flex flex-1 flex-col space-y-10 bg-white p-8 overflow-y-scroll">
       {todos.map(({id, title, complete}) => (
         <div key={id} className="flex h-fit w-full flex-row space-x-6">
           <div className={`flex items-center justify-center rounded-lg ${complete && "bg-[#5DBD76]"}`}>
