@@ -6,8 +6,11 @@ const prisma = new PrismaClient();
 
 export const getAllTodos = async (
   complete: boolean | null
-): Promise<Todo[]> => {
+): Promise<Partial<Todo>[]> => {
   return await prisma.todo.findMany({
+    orderBy: {
+      createdAt: "asc"
+    },
     where: {
       complete: complete ?? undefined,
     },
@@ -34,6 +37,7 @@ export const createTodo = async (
 ): Promise<Todo> => {
   const data = {
     ...newTodo,
+    deadline: new Date(newTodo.deadline),
     id: uuidv4(),
   };
 
